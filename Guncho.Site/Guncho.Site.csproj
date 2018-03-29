@@ -68,6 +68,7 @@
     <EmbeddedResource Include="app\controllers\listRealmsController.ts" />
     <EmbeddedResource Include="app\controllers\playController.ts" />
     <EmbeddedResource Include="app\directives\glkGameport.ts" />
+    <TypeScriptCompile Include="app\directives\tooltipToggle.ts" />
     <EmbeddedResource Include="app\services\authInterceptorService.ts" />
     <EmbeddedResource Include="app\services\authService.ts" />
     <EmbeddedResource Include="app\services\glkService.ts" />
@@ -75,6 +76,7 @@
     <EmbeddedResource Include="app\services\resources.ts" />
     <EmbeddedResource Include="app\controllers\signUpController.ts" />
     <EmbeddedResource Include="app\controllers\editProfileController.ts" />
+    <TypeScriptCompile Include="scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <EmbeddedResource Include="app\controllers\newRealmController.ts" />
     <TypeScriptCompile Include="master.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />

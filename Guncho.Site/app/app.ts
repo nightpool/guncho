@@ -58,7 +58,7 @@ function configureAuthInterceptor($httpProvider: ng.IHttpProvider) {
 
 var app = angular
     .module('GunchoApp',
-    ['ngRoute', 'ngResource', 'LocalStorageModule', 'angular-loading-bar', 'ui.unique', 'ui.bootstrap', 'ui.validate'])
+    ['ngRoute', 'ngResource', 'LocalStorageModule', 'angular-loading-bar', 'ui.unique', 'ui.bootstrap', 'ui.validate', 'ui.bootstrap.popover'])
     .constant('gunchoClientVersion', '1.1')
     .constant('serviceBase', '/api')
     .constant('signalrBase', '/signalr')
