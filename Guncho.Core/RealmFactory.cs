@@ -136,27 +136,30 @@ namespace Guncho
 
         protected static void CopyDirectory(DirectoryInfo source, DirectoryInfo target)
         {
-            // Check if the target directory exists, if not, create it.
-            if (Directory.Exists(target.FullName) == false)
+            if (source.Exists)
             {
-                Directory.CreateDirectory(target.FullName);
-            }
+                // Check if the target directory exists, if not, create it.
+                if (Directory.Exists(target.FullName) == false)
+                {
+                    Directory.CreateDirectory(target.FullName);
+                }
 
-            // Copy each file into its new directory.
-            foreach (FileInfo fi in source.GetFiles())
-            {
-                fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
-            }
+                // Copy each file into its new directory.
+                foreach (FileInfo fi in source.GetFiles())
+                {
+                    fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
+                }
 
-            // Copy each subdirectory using recursion.
-            foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
-            {
-                if (diSourceSubDir.Name.ToLower() == ".svn")
-                    continue;
+                // Copy each subdirectory using recursion.
+                foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+                {
+                    if (diSourceSubDir.Name.ToLower() == ".svn")
+                        continue;
 
-                DirectoryInfo nextTargetSubDir =
-                    target.CreateSubdirectory(diSourceSubDir.Name);
-                CopyDirectory(diSourceSubDir, nextTargetSubDir);
+                    DirectoryInfo nextTargetSubDir =
+                        target.CreateSubdirectory(diSourceSubDir.Name);
+                    CopyDirectory(diSourceSubDir, nextTargetSubDir);
+                }
             }
         }
     }
@@ -209,6 +212,9 @@ namespace Guncho
 
             string tempNI = Path.Combine(skeleton, "Source" + Path.DirectorySeparatorChar + "story.ni");
             string tempINF = Path.Combine(skeleton, "Build" + Path.DirectorySeparatorChar + "auto.inf");
+            Directory.CreateDirectory(Path.GetDirectoryName(tempNI));
+            Directory.CreateDirectory(Path.GetDirectoryName(tempINF));
+            Directory.CreateDirectory(Path.Combine(skeleton, "Index"));
             File.Delete(tempNI);
             File.Delete(tempINF);
             File.Copy(sourceFile, tempNI);
